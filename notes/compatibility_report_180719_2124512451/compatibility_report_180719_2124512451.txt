@@ -1,0 +1,26 @@
+Converting GML script: ${project_dir}\objects\README\Create_0.gml
+Converted description /// @description MORE INFO
+
+Converting GML script: ${project_dir}\objects\obj_camera\Create_0.gml
+Converted builtin - line 4: view_wview[0] = global.gameWidth -> __view_set( e__VW.WView, 0, global.gameWidth )
+Converted builtin - line 5: view_hview[0] = global.gameHeight -> __view_set( e__VW.HView, 0, global.gameHeight )
+Converted builtin - line 2: view_wport[0] = global.gameWidth -> __view_set( e__VW.WPort, 0, global.gameWidth )
+Converted builtin - line 3: view_hport[0] = global.gameHeight -> __view_set( e__VW.HPort, 0, global.gameHeight )
+Converted description /// @description Camera
+
+Converting GML script: ${project_dir}\objects\obj_camera\Step_0.gml
+Converted builtin - line 11: view_wview[0] = global.gameWidth -> __view_set( e__VW.WView, 0, global.gameWidth )
+Converted builtin - line 12: view_hview[0] = global.gameHeight -> __view_set( e__VW.HView, 0, global.gameHeight )
+Converted builtin - line 14: view_visible[0] = true -> __view_set( e__VW.Visible, 0, true )
+Converted builtin - line 9: view_wport[0] = global.gameWidth -> __view_set( e__VW.WPort, 0, global.gameWidth )
+Converted builtin - line 10: view_hport[0] = global.gameHeight -> __view_set( e__VW.HPort, 0, global.gameHeight )
+Converted description /// @description Checks
+Converted string - line 28: '1' -> "1"
+Converted string - line 32: '2' -> "2"
+Converted string - line 36: '3' -> "3"
+
+Added compatibility script 'view/__view_set.gml'
+Added compatibility script 'view/__view_set_internal.gml'
+Added compatibility script 'view/__init_view.gml'
+Added compatibility script '__init_global.gml'
+Added compatibility script 'view/__view_get.gml'
