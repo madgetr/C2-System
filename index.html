@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facilities Data</title>
+</head>
+<body>
+<h1>Facilities Data</h1>
+<div id="facilities"></div>
+
+<script>
+  async function getFacilities(cookie) {
+    const url = "https://hockeyville.kraftheinz.com/api/facilities";
+    const headers = {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
+      "Cookie": cookie
+    };
+
+    try {
+      const response = await fetch(url, { headers });
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+      const data = await response.json();
+      displayFacilities(data);
+    } catch (error) {
+      console.error('There has been a problem with your fetch operation:', error);
+    }
+  }
+
+  function displayFacilities(data) {
+    const facilitiesDiv = document.getElementById('facilities');
+    data.facilities.forEach(facility => {
+      const facilityDiv = document.createElement('div');
+      facilityDiv.textContent = `ID: ${facility.data.id}, Name: ${facility.data.name}, Points: ${facility.points}, Top 4: ${facility.isTop4Facility}`;
+      facilitiesDiv.appendChild(facilityDiv);
+    });
+  }
+
+  // Replace 'your_cookie_here' with the actual cookie value
+  getFacilities('OptanonAlertBoxClosed=2025-01-19T00:01:21.671Z; OptanonAlertBoxClosed=2025-01-19T16:37:56.564Z; OptanonConsent=isGpcEnabled=0&datestamp=Sun+Jan+19+2025+11%3A37%3A56+GMT-0500+(Eastern+Standard+Time)&version=202310.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=8505e6c1-aca7-4385-87f0-e2aa7219ba43&interactionCount=1&landingPath=NotLandingPage&groups=C0003%3A1%2CC0001%3A1%2CC0004%3A1%2CC0002%3A1; _ga=GA1.1.1849577535.1737304677; _clck=h1viqj%7C2%7Cfsp%7C0%7C1845; _cioanonid=df43cea8-eaee-30c9-7aa4-d6157b6c01da; _ga_TNN2EV1MGZ=GS1.1.1737304701.1.1.1737304732.0.0.0; _ga_TTEEDNY7VD=GS1.1.1737304686.1.1.1737305159.0.0.0; _tt_enable_cookie=1; _ttp=KhqoFLj2wDKRHQ8VC4ARymX6G83.tt.1; __utmz=118107920.1738028920.48.10.utmcsr=chatgpt.com|utmccn=(not+set)|utmcmd=(not+set); __utmc=118107920; %40rocd%2Fkraft_hockeyville2025%3AregisteredUser=yes; __utma=118107920.520188367.1737244880.1738943438.1738946516.69; OptanonConsent=isGpcEnabled=0&datestamp=Fri+Feb+07+2025+12%3A12%3A53+GMT-0500+(Eastern+Standard+Time)&version=202501.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=8505e6c1-aca7-4385-87f0-e2aa7219ba43&interactionCount=1&landingPath=NotLandingPage&groups=C0003%3A1%2CC0001%3A1%2CC0004%3A1%2CC0002%3A1; _sp_id.076d=0412f7bf-a1ce-4982-8c73-8a4ff2cf8ab7.1737309807.56.1738948373.1738940920.c0c1c6b4-4b61-4088-bcea-7790756bb31f; __utmv=118107920.r%3D1%3Bc%3Ddef%3Bd%3Ddef%3Ba%3D; _ga_6V3637RM50=GS1.1.1738946516.59.1.1738948651.60.0.0; aws-waf-token=d01b5c6c-83c4-4202-9e29-c5dda30b97e2:CAoAtt2Ds811AAAA:qunRDstuOKc0Q5lWMGQhewMlSoNpMQgcKQuZp5PRLjzyrtNcMHVDZZLdLu1j3qB31BucMBi+tZX7vwCAZ47joKIfFMfzutkFMn+4MjtTA13bT0s07erMXeZc6wSVCO666pyUv3QiYo/JVFfvaB+H9AxUrH5pw2jeegJmuwzjtfNU8x15/r6oN8RNcxyuZDk5aqUhr/etPYDARDF0DW6etxV9ZwWPhoPIX+ksOCBlmxJPpnYjFpA9vsJMHY/yCSuq1LZ7tN+9WRlPJ81IxQ4PrBsmdeP3Cw==\n');
+</script>
+</body>
+</html>
